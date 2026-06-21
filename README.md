@@ -17,7 +17,15 @@ GovernanceOps asks: *"Should the model be deployed?"*
 
 These are different questions with different consequences. A model can achieve excellent predictive performance and still fail fairness requirements, exhibit population drift, lack monitoring controls, or violate governance documentation standards. Those failures are typically discovered after deployment — during a regulatory examination, not before.
 
-GovernanceOps moves the discovery point to before deployment.
+GovernanceOps moves the discovery point to before deployment. GovernanceOps transforms AI governance from a periodic review activity into a continuous deployment control.
+
+### Three Promotion Outcomes
+
+| Decision | Meaning |
+|---|---|
+| **APPROVED** | All governance rules passed. Model eligible for production. |
+| **CONDITIONAL** | Minor gaps present. Remediation required within 30 days. Human review required. |
+| **BLOCKED** | Critical fairness or drift failures. Model cannot proceed to production. |
 
 ---
 
@@ -30,7 +38,7 @@ Drop a model card and metrics into the registry. GovernanceOps automatically:
 3. Generates a structured audit evidence package
 4. Writes a promotion decision: **APPROVED / CONDITIONAL / BLOCKED**
 
-No manual review required for standard cases. No LLM involved in the final decision.
+Human review is reserved for CONDITIONAL or high-risk cases. No LLM involved in the final decision.
 
 ---
 
@@ -228,4 +236,4 @@ AI / ML Engineer | AI Governance | Model Risk Management
 
 ---
 
-*Regulatory context: OSFI Guideline E-23 — Enterprise-Wide Model Risk Management (enforcement May 2027)*
+*Designed for regulated AI environments and adaptable to enterprise governance frameworks including OSFI E-23, GDPR, EU AI Act, NIST AI RMF, SR 11-7, and FINTRAC.*

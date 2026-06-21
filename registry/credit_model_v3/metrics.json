@@ -1,0 +1,8 @@
+{
+  "model_id": "credit_model_v3",
+  "evaluation_date": "2026-06-10",
+  "performance": {"auc": 0.847, "ks_statistic": 0.62, "ece": 0.018},
+  "fairness": {"air": 0.91, "demographic_parity": 0.94, "equal_opportunity": 0.89, "tpr_gap": 0.06},
+  "drift": {"psi": 0.08, "csi": 0.05},
+  "reliability": {"hallucination_risk": 0.05, "grounding_score": 0.94, "citation_coverage": 0.91}
+}

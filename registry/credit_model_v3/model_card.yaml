@@ -1,0 +1,18 @@
+model_id: credit_model_v3
+model_name: "Credit Risk Scoring Model v3"
+model_type: credit_risk
+use_case: retail_credit_adjudication
+version: "3.0.0"
+owner: "model-risk-team@bank.com"
+created_date: "2026-05-15"
+framework: XGBoost
+language: Python
+documentation:
+  fairness_testing: true
+  drift_monitoring: true
+  independent_validation: true
+  osfi_e23_mapping: true
+  audit_trail: true
+regulatory_framework: OSFI E-23
+deployment_environment: production
+risk_tier: LOW

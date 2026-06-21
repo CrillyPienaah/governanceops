@@ -1,0 +1,18 @@
+model_id: fraud_model_v1
+model_name: "Fraud Detection Model v1"
+model_type: fraud_detection
+use_case: transaction_fraud_detection
+version: "1.0.0"
+owner: "data-science-team@bank.com"
+created_date: "2026-06-01"
+framework: XGBoost
+language: Python
+documentation:
+  fairness_testing: false
+  drift_monitoring: false
+  independent_validation: false
+  osfi_e23_mapping: false
+  audit_trail: false
+regulatory_framework: OSFI E-23
+deployment_environment: production
+risk_tier: HIGH

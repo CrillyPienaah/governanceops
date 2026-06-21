@@ -1,0 +1,18 @@
+{
+  "model_id": "credit_model_v3",
+  "model_name": "Credit Risk Scoring Model v3",
+  "promotion_status": "APPROVED",
+  "timestamp": "2026-06-21T00:18:34.886812",
+  "guardrail_summary": {
+    "total_rules": 9,
+    "passed": 9,
+    "warnings": 0,
+    "failures": 0,
+    "critical_failures": 0
+  },
+  "failures": [],
+  "warnings": [],
+  "audit_package_path": "outputs\\credit_model_v3_audit_package.md",
+  "llm_override_possible": false,
+  "pipeline": "GovernanceOps Automated Promotion Pipeline v1.0"
+}

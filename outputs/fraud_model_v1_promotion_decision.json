@@ -1,0 +1,68 @@
+{
+  "model_id": "fraud_model_v1",
+  "model_name": "Fraud Detection Model v1",
+  "promotion_status": "BLOCKED",
+  "timestamp": "2026-06-21T00:18:34.891614",
+  "guardrail_summary": {
+    "total_rules": 9,
+    "passed": 2,
+    "warnings": 0,
+    "failures": 7,
+    "critical_failures": 2
+  },
+  "failures": [
+    {
+      "rule": "FAIRNESS_AIR",
+      "severity": "CRITICAL",
+      "message": "AIR 0.590 below minimum 0.8",
+      "osfi_reference": "OSFI E-23 Section 6.2",
+      "remediation": "Retrain with fairness constraints or apply post-processing calibration"
+    },
+    {
+      "rule": "FAIRNESS_EQUAL_OPPORTUNITY",
+      "severity": "HIGH",
+      "message": "TPR gap 0.180 exceeds maximum 0.1",
+      "osfi_reference": "OSFI E-23 Section 6.2",
+      "remediation": "Apply equalized odds post-processing"
+    },
+    {
+      "rule": "DRIFT_PSI_CRITICAL",
+      "severity": "CRITICAL",
+      "message": "PSI 0.250 indicates significant distribution shift",
+      "osfi_reference": "OSFI E-23 Section 5.1",
+      "remediation": "Immediate model retraining required"
+    },
+    {
+      "rule": "DOC_FAIRNESS",
+      "severity": "HIGH",
+      "message": "Fairness testing not documented",
+      "osfi_reference": "OSFI E-23 Section 6.2",
+      "remediation": "Add fairness testing documentation to model card"
+    },
+    {
+      "rule": "DOC_DRIFT_MONITORING",
+      "severity": "HIGH",
+      "message": "Drift monitoring not configured",
+      "osfi_reference": "OSFI E-23 Section 5.1",
+      "remediation": "Configure PSI/CSI monitoring before deployment"
+    },
+    {
+      "rule": "DOC_INDEPENDENT_VALIDATION",
+      "severity": "HIGH",
+      "message": "Independent validation not completed",
+      "osfi_reference": "OSFI E-23 Section 4.3",
+      "remediation": "Complete independent model validation"
+    },
+    {
+      "rule": "DOC_AUDIT_TRAIL",
+      "severity": "HIGH",
+      "message": "Audit trail not generated",
+      "osfi_reference": "OSFI E-23 Section 8.1",
+      "remediation": "Generate complete audit trail"
+    }
+  ],
+  "warnings": [],
+  "audit_package_path": "outputs\\fraud_model_v1_audit_package.md",
+  "llm_override_possible": false,
+  "pipeline": "GovernanceOps Automated Promotion Pipeline v1.0"
+}

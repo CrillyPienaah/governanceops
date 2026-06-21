@@ -3,7 +3,9 @@
 
 > **DevOps governs software delivery. MLOps governs model delivery. GovernanceOps governs AI deployment.**
 
-[![Category](https://img.shields.io/badge/Category-GovernanceOps-blue)](https://github.com/CrillyPienaah/governanceops)
+GovernanceOps introduces governance as a deployment gate rather than a post-deployment review activity.
+
+[![Category](https://img.shields.io/badge/Category-GovernanceOps%20Platform-blue)](https://github.com/CrillyPienaah/governanceops)
 [![Regulatory](https://img.shields.io/badge/Regulatory-OSFI%20E--23-red)](https://www.osfi-bsif.gc.ca)
 [![Stack](https://img.shields.io/badge/Stack-Python%20%7C%20ADK%20Compatible-green)](https://github.com/CrillyPienaah/governanceops)
 
@@ -38,7 +40,17 @@ Drop a model card and metrics into the registry. GovernanceOps automatically:
 3. Generates a structured audit evidence package
 4. Writes a promotion decision: **APPROVED / CONDITIONAL / BLOCKED**
 
-Human review is reserved for CONDITIONAL or high-risk cases. No LLM involved in the final decision.
+Human review is reserved for CONDITIONAL or high-risk cases. LLMs may assist with evidence collection and analysis, but promotion decisions are determined exclusively by deterministic governance rules.
+
+---
+
+## Enterprise Benefits
+
+- Reduces governance review cycle times by automating standard model evaluations
+- Creates repeatable, examiner-ready audit evidence for every promotion decision
+- Prevents non-compliant models from reaching production before issues are discovered
+- Standardizes promotion decisions across teams, models, and regulatory domains
+- Supports regulatory examinations with immutable audit artifacts
 
 ---
 
@@ -204,6 +216,7 @@ Evaluate all models in the registry and generate governance promotion decisions.
 
 ## Roadmap
 
+- Policy-as-Code governance engine — define governance rules as versioned YAML policies, not hardcoded Python
 - MLflow integration — replace mock registry with real MLflow API
 - Hugging Face model card ingestion
 - GitHub Actions deployment gate — block PRs that fail governance

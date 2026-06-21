@@ -1,0 +1,18 @@
+model_id: consumer_lending_v2
+model_name: "Consumer Lending Model v2"
+model_type: credit_risk
+use_case: consumer_lending_adjudication
+version: "2.0.0"
+owner: "model-risk-team@bank.com"
+created_date: "2026-06-10"
+framework: LightGBM
+language: Python
+documentation:
+  fairness_testing: true
+  drift_monitoring: true
+  independent_validation: true
+  osfi_e23_mapping: true
+  audit_trail: true
+regulatory_framework: OSFI E-23
+deployment_environment: staging
+risk_tier: MEDIUM

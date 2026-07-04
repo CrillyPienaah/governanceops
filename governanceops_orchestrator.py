@@ -31,7 +31,7 @@ import yaml
 import asyncio
 import logging
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Any
 
 logging.basicConfig(
@@ -190,7 +190,7 @@ class AuditPackageGenerator:
     def generate(self, model_card, metrics, guardrail_result, promotion_decision):
         model_id = model_card["model_id"]
         model_name = model_card["model_name"]
-        timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
         def pf(condition):
             return "PASS" if condition else "FAIL"
@@ -295,7 +295,7 @@ class GovernanceOpsOrchestrator:
         print(f"\n{'='*65}")
         print(f"  GOVERNANCEOPS -- MODEL PROMOTION PIPELINE")
         print(f"  Model: {model_id}")
-        print(f"  {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
+        print(f"  {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
         print(f"{'='*65}")
 
         if not self.registry.model_exists(model_id):
@@ -330,7 +330,7 @@ class GovernanceOpsOrchestrator:
             "model_id": model_id,
             "model_name": model_card["model_name"],
             "promotion_status": status,
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "guardrail_summary": guardrail_result["summary"],
             "failures": guardrail_result["failures"],
             "warnings": guardrail_result["warnings"],

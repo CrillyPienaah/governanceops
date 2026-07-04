@@ -145,8 +145,6 @@ Expected output:
   PROMOTION DECISION: BLOCKED    (fraud_model_v1  -- 7 failures, 2 critical)
 ```
 
-> **Before pushing:** run this locally and confirm the console output matches exactly — copy the real output here if it differs at all.
-
 ## Adding a New Model
 
 Create a folder in `registry/` with two files:

@@ -1,35 +1,28 @@
 # GovernanceOps
-### Automated AI Model Promotion Pipeline
 
-> **DevOps governs software delivery. MLOps governs model delivery. GovernanceOps governs AI deployment.**
+**Automated AI Model Promotion Pipeline**
+
+DevOps governs software delivery. MLOps governs model delivery. GovernanceOps governs AI deployment.
 
 GovernanceOps introduces governance as a deployment gate rather than a post-deployment review activity.
 
-[![Category](https://img.shields.io/badge/Category-GovernanceOps%20Platform-blue)](https://github.com/CrillyPienaah/governanceops)
-[![Regulatory](https://img.shields.io/badge/Regulatory-OSFI%20E--23-red)](https://www.osfi-bsif.gc.ca)
-[![Stack](https://img.shields.io/badge/Stack-Python%20%7C%20ADK%20Compatible-green)](https://github.com/CrillyPienaah/governanceops)
-
----
-
 ## The Problem
 
-Most organizations ask: *"How accurate is the model?"*
+Most organizations ask: "How accurate is the model?"
 
-GovernanceOps asks: *"Should the model be deployed?"*
+GovernanceOps asks: "Should the model be deployed?"
 
 These are different questions with different consequences. A model can achieve excellent predictive performance and still fail fairness requirements, exhibit population drift, lack monitoring controls, or violate governance documentation standards. Those failures are typically discovered after deployment — during a regulatory examination, not before.
 
 GovernanceOps moves the discovery point to before deployment. GovernanceOps transforms AI governance from a periodic review activity into a continuous deployment control.
 
-### Three Promotion Outcomes
+## Three Promotion Outcomes
 
 | Decision | Meaning |
 |---|---|
 | **APPROVED** | All governance rules passed. Model eligible for production. |
 | **CONDITIONAL** | Minor gaps present. Remediation required within 30 days. Human review required. |
 | **BLOCKED** | Critical fairness or drift failures. Model cannot proceed to production. |
-
----
 
 ## What It Does
 
@@ -38,11 +31,9 @@ Drop a model card and metrics into the registry. GovernanceOps automatically:
 1. Reads the model card and metrics from the registry
 2. Evaluates governance rules — fairness, drift, performance, reliability, documentation
 3. Generates a structured audit evidence package
-4. Writes a promotion decision: **APPROVED / CONDITIONAL / BLOCKED**
+4. Writes a promotion decision: APPROVED / CONDITIONAL / BLOCKED
 
 Human review is reserved for CONDITIONAL or high-risk cases. LLMs may assist with evidence collection and analysis, but promotion decisions are determined exclusively by deterministic governance rules.
-
----
 
 ## Enterprise Benefits
 
@@ -51,8 +42,6 @@ Human review is reserved for CONDITIONAL or high-risk cases. LLMs may assist wit
 - Prevents non-compliant models from reaching production before issues are discovered
 - Standardizes promotion decisions across teams, models, and regulatory domains
 - Supports regulatory examinations with immutable audit artifacts
-
----
 
 ## The Key Finding
 
@@ -68,11 +57,9 @@ PROMOTION DECISION: BLOCKED
 7 failures. 2 critical. Model cannot proceed to production.
 ```
 
-Compare with a well-governed credit model (AUC 0.847, AIR 0.91, PSI 0.08) that receives **APPROVED** across all 9 governance rules.
+Compare with a well-governed credit model (AUC 0.847, AIR 0.91, PSI 0.08) that receives APPROVED across all 9 governance rules.
 
-Accuracy alone is not governance.
-
----
+**Accuracy alone is not governance.**
 
 ## Architecture
 
@@ -93,8 +80,6 @@ outputs/
     |-- {model_id}_promotion_decision.json
 ```
 
----
-
 ## Governance Rules
 
 Nine rules evaluated on every model. Any failure blocks promotion.
@@ -113,9 +98,7 @@ Nine rules evaluated on every model. Any failure blocks promotion.
 
 Thresholds are enterprise governance values aligned with model risk management best practices and informed by fairness literature. The 0.80 AIR threshold reflects the widely-used 4/5ths rule.
 
-**LLM override possible: False.** Every rule is a Python `if` statement.
-
----
+**LLM override possible: False. Every rule is a Python if statement.**
 
 ## Registry Structure
 
@@ -136,8 +119,6 @@ governanceops/
     ├── credit_model_v3_audit_package.md
     └── credit_model_v3_promotion_decision.json
 ```
-
----
 
 ## Quick Start
 
@@ -164,7 +145,7 @@ Expected output:
   PROMOTION DECISION: BLOCKED    (fraud_model_v1  -- 7 failures, 2 critical)
 ```
 
----
+> **Before pushing:** run this locally and confirm the console output matches exactly — copy the real output here if it differs at all.
 
 ## Adding a New Model
 
@@ -200,19 +181,13 @@ risk_tier: LOW
 
 Run `python governanceops_orchestrator.py` — the pipeline picks it up automatically.
 
----
-
 ## Antigravity Compatible
 
 GovernanceOps is designed to be orchestrated by Antigravity or any ADK-compatible agent runtime. The `GovernanceOpsOrchestrator` class exposes a single `await orchestrator.promote(model_id)` interface that any agent can call as a tool.
 
 To connect Antigravity: point it at `governanceops_orchestrator.py` and prompt:
 
-```
-Evaluate all models in the registry and generate governance promotion decisions.
-```
-
----
+> Evaluate all models in the registry and generate governance promotion decisions.
 
 ## Roadmap
 
@@ -222,14 +197,11 @@ Evaluate all models in the registry and generate governance promotion decisions.
 - GitHub Actions deployment gate — block PRs that fail governance
 - Human-in-the-loop workflow for CONDITIONAL decisions
 - FastAPI REST endpoint for enterprise integration
-- Expanded regulatory frameworks beyond OSFI E-23
-
----
+- Extend validated coverage beyond OSFI E-23 to additional regulatory frameworks
 
 ## Relationship to Governance Control Tower
 
-GovernanceOps is the deployment gate layer above the
-[Enterprise AI Governance Control Tower](https://github.com/CrillyPienaah/governance-control-tower).
+GovernanceOps is the deployment gate layer above the Enterprise AI Governance Control Tower.
 
 | Layer | System | Role |
 |---|---|---|
@@ -238,15 +210,10 @@ GovernanceOps is the deployment gate layer above the
 | Layer 2 | Five live governance systems | Specialist agents |
 | Layer 1 | CanFraudBench / CanFinBench | Published benchmarks |
 
----
-
 ## Author
 
 **Christopher Crilly Pienaah**
 AI / ML Engineer | AI Governance | Model Risk Management
-[chris-pienaah-portfolio.vercel.app](https://chris-pienaah-portfolio.vercel.app)
-[github.com/CrillyPienaah](https://github.com/CrillyPienaah)
+[chris-pienaah-portfolio.vercel.app](https://chris-pienaah-portfolio.vercel.app) · [github.com/CrillyPienaah](https://github.com/CrillyPienaah)
 
----
-
-*Designed for regulated AI environments and adaptable to enterprise governance frameworks including OSFI E-23, GDPR, EU AI Act, NIST AI RMF, SR 11-7, and FINTRAC.*
+Built and validated against OSFI E-23. The rule engine architecture is designed to extend to other model risk frameworks — GDPR, EU AI Act, NIST AI RMF, SR 11-7, FINTRAC — as a roadmap item.
